@@ -18,6 +18,7 @@ assert count_even_numbers([-2, 2, -10, 8]) == 4
 
 WANTED_PEOPLE = ['John Doe', 'Clint Eastwood', 'Chuck Norris']
 
+
 def find_wanted_people(list_to_check):
     wanted_list = []
     for i in list_to_check:
