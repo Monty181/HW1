@@ -14,8 +14,7 @@ while choice != 4:
     if choice == 1:
         contact_name = str(input("Please enter contact name: "))
         phone_number = int(input("Please enter contact phone number: "))
-        contact_item = {}
-        contact_item[contact_name] = phone_number
+        contact_item = {contact_name: phone_number}
         contact_list = contact_list | contact_item
         print("New contact has been added")
         print(menu)
