@@ -7,6 +7,8 @@ def count_even_numbers(numbers):
         if num % 2 == 0:
             count += 1
     return count
+
+
 assert count_even_numbers([1, 2, 3, 4, 5, 6]) == 3
 assert count_even_numbers([1, 3, 5, 7]) == 0
 assert count_even_numbers([-2, 2, -10, 8]) == 4
@@ -22,6 +24,8 @@ def find_wanted_people(list_to_check):
         if i in WANTED_PEOPLE:
             wanted_list.append(i)
     return wanted_list
+
+
 people_to_check1 = ['Donald Duck', 'Clint Eastwood', 'John Doe', 'Barack Obama']
 wanted1 = find_wanted_people(people_to_check1)
 assert len(wanted1) == 2
@@ -37,6 +41,7 @@ assert wanted2 == []
 
 # Your implementation here
 
+
 def average_length_of_words(sentence):
     sentence_list = sentence.split(" ")
     lenght_word_list = []
@@ -44,6 +49,7 @@ def average_length_of_words(sentence):
         lenght_word_list.append(len(i))
     average_length = round(sum(lenght_word_list)/len(lenght_word_list), 1)
     return average_length
+
 
 assert average_length_of_words('only four lett erwo rdss') == 4
 assert average_length_of_words('one two three') == 3.7
