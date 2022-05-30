@@ -5,7 +5,7 @@ class Contacts:
     def __init__(self, name, phone):
         self.contact_name = name
         self.contact_phone = phone
-        Contacts.contact_list[self.contact_name] = self.contact_phone
+        self.contact_list[self.contact_name] = self.contact_phone
         print("New contact has been added")
 
 

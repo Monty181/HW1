@@ -8,7 +8,7 @@ class People:
         self.age = age
         self.height = height
         self.weight = weight
-        People.common_list.append(self)
+        self.common_list.append(self)
 
     def __repr__(self):
         return repr((self.name, self.age, self.height, self.weight))
