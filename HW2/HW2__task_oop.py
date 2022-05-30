@@ -88,3 +88,22 @@ assert doge.get_energy() == 9
 
 another_doge = Dog()
 assert another_doge.get_energy() == 10
+
+def get_data_fig(*args, **kwargs):
+    p=0
+    lst = []
+    for i in args:
+        p +=i
+
+    if "type" in kwargs:
+        lst.append(kwargs["type"])
+    if "color" in kwargs:
+        lst.append(kwargs["color"])
+    if "closed" in kwargs:
+        lst.append(kwargs["closed"])
+    if "width" in kwargs:
+        lst.append(kwargs["width"])
+    return (p, ) + tuple(lst)
+
+
+print(get_data_fig(3,4,5, type = True, color = 123, closed = True, width = 4))
