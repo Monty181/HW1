@@ -1,5 +1,6 @@
 from pyisemail import is_email
 from tabulate import tabulate
+import phonenumbers
 
 
 class Contacts:
@@ -29,6 +30,12 @@ class Contacts:
     def check_name(name):
         return len(name) > 2
 
+    # @staticmethod
+    # def check_phone(str_phone):
+    #     phone = phonenumbers.parse(str_phone)
+    #     return phonenumbers.is_possible_number(phone)
+
+
 
 menu = ("""
 1. Add contact
@@ -49,6 +56,9 @@ while choice != 5:
             print("Name is too small")
             contact_name = str(input("Please enter contact name: "))
         contact_phone = str(input("Please enter contact phone number: "))
+        # while not Contacts.check_phone(contact_phone):
+        #     print("Phone number is invalid")
+        #     contact_phone = str(input("Please enter contact phone number: "))
         contact_email = str(input("Please enter contact email: "))
         while not Contacts.check_email(contact_email):
             print("Email is invalid")
