@@ -23,7 +23,9 @@ class Contact:
 
 
 class ContactBook:
-    contact_list = []
+
+    def __init__(self):
+        self.contact_list = []
 
     def add_contact(self, contact_item):
         self.contact_list.append(contact_item)
