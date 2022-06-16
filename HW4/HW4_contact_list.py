@@ -2,7 +2,7 @@ from pyisemail import is_email
 from tabulate import tabulate
 
 
-class Contacts:
+class Contact:
 
     def __init__(self, name, phone, email):
         self.contact_name = name
@@ -15,6 +15,9 @@ class Contacts:
     def get_phone(self):
         return self.contact_phone
 
+    def get_email(self):
+        return self.contact_email
+
     def get_contact(self):
         return [self.contact_name, self.contact_phone, self.contact_email]
 
@@ -24,33 +27,32 @@ class ContactBook:
 
     def add_contact(self, contact_item):
         self.contact_list.append(contact_item)
-        print("New contact has been added")
 
     def print_book(self):
         table = []
         for i in self.contact_list:
-            table.append(Contacts.get_contact(i))
-        print(tabulate(table, headers=["Name", "Phone", "Email"]))
+            table.append(Contact.get_contact(i))
+        return table
 
     def find_name(self, search_word):
         table = []
         for i in self.contact_list:
-            if search_by_name == Contacts.get_name(i):
-                table.append(Contacts.get_contact(i))
-        print(tabulate(table, headers=["Name", "Phone", "Email"]))
+            if search_by_name == Contact.get_name(i):
+                table.append(Contact.get_contact(i))
+        return table
 
     def find_number(self, search_number):
         table = []
         for i in self.contact_list:
-            if search_by_phone == Contacts.get_phone(i):
-                table.append(Contacts.get_contact(i))
-        print(tabulate(table, headers=["Name", "Phone", "Email"]))
+            if search_by_phone == Contact.get_phone(i):
+                table.append(Contact.get_contact(i))
+        return table
 
     def delete_contact(self, name):
         for i, j in enumerate(self.contact_list):
-            if delete_contact_name == Contacts.get_name(j):
+            if delete_contact_name == Contact.get_name(j):
                 self.contact_list.pop(i)
-                print("Contact was removed successfully")
+                return True
 
 
 class Validator:
@@ -87,8 +89,9 @@ while choice != 5:
         while not Validator.check_email(contact_email):
             print("Email is invalid")
             contact_email = str(input("Please enter contact email: "))
-        contact = Contacts(contact_name, contact_phone, contact_email)
+        contact = Contact(contact_name, contact_phone, contact_email)
         contact_book.add_contact(contact)
+        print("New contact has been added")
 
     elif choice == 2:
         search_choice = int(input("""
@@ -98,17 +101,19 @@ while choice != 5:
         Please enter search action number: """))
         if search_choice == 1:
             search_by_name = str(input("Please enter contact name: "))
-            contact_book.find_name(search_by_name)
+            print(tabulate(contact_book.find_name(search_by_name), headers=["Name", "Phone", "Email"]))
         elif search_choice == 2:
             search_by_phone = str(input("Please enter contact phone number: "))
             contact_book.find_number(search_by_phone)
+            print(tabulate(contact_book.find_number(search_by_phone), headers=["Name", "Phone", "Email"]))
 
     elif choice == 3:
-        contact_book.print_book()
+        print(tabulate(contact_book.print_book(), headers=["Name", "Phone", "Email"]))
 
     elif choice == 4:
         delete_contact_name = str(input("Please enter contact name that you want to delete: "))
-        contact_book.delete_contact(delete_contact_name)
+        if contact_book.delete_contact(delete_contact_name):
+            print("Contact was removed successfully")
 
     elif choice == 5:
         print("Bye!")
