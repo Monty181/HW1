@@ -2,6 +2,7 @@ from tabulate import tabulate
 import contact_module
 import contact_book_module
 import validator_module
+import file_manager
 
 
 def main():
@@ -13,6 +14,9 @@ def main():
     5. Exit
     """)
     contact_book = contact_book_module.ContactBook()
+    book_path = "contact_book_db.txt"
+    contact_book.get_contacts_from_file(file_manager.FileManager.open_file(book_path))
+
     choice = -1
 
     while choice != 5:
@@ -56,6 +60,7 @@ def main():
 
         elif choice == 5:
             print("Bye!")
+            file_manager.FileManager.write_file(book_path, contact_book.prepare_for_saving_to_file())
             break
 
         else:
